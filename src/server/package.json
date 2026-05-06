@@ -20,6 +20,8 @@
     "dependencies": {
         "@apollo/server": "^5.5.1",
         "@as-integrations/express5": "^1.1.2",
+        "@graphql-tools/graphql-file-loader": "^8.1.14",
+        "@graphql-tools/load": "^8.1.10",
         "apollo-server-express": "^3.13.0",
         "express": "^5.2.1",
         "graphql": "^16.13.2"
