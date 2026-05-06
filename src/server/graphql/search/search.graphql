@@ -1,0 +1,28 @@
+type Query {
+    searchListings(prompt: String!): SearchResult!
+}
+
+type SearchResult {
+    listings: [Listing!]!
+    summary: String
+    filters: Filters
+}
+
+type Listing {
+    id: ID!
+    address: String!
+    price: Int!
+    bedrooms: Int
+    bathrooms: Float
+    squareFeet: Int
+    imageUrl: String
+    listingUrl: String
+}
+
+type Filters {
+    location: String
+    minPrice: Int
+    maxPrice: Int
+    bedrooms: Int
+    bathrooms: Float
+}
