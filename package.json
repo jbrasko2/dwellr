@@ -1,6 +1,7 @@
 {
     "name": "dwellr",
     "private": true,
+    "type": "module",
     "workspaces": [
         "src/client",
         "src/server"
