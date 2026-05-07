@@ -15,7 +15,8 @@
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "test": "npm run test --workspaces --if-present"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
@@ -23,6 +24,7 @@
         "@graphql-codegen/typescript": "^6.0.0",
         "@graphql-codegen/typescript-operations": "^6.0.0",
         "@graphql-codegen/typescript-resolvers": "^6.0.0",
+        "@types/jest": "^30.0.0",
         "concurrently": "^8.2.0",
         "eslint": "^10.3.0",
         "eslint-config-prettier": "^10.1.8",
