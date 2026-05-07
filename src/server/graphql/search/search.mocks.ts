@@ -1,3 +1,5 @@
+import { GraphQLResolveInfo } from 'graphql';
+
 export const searchMocks = {
     summary: 'Showing results for your search',
     filters: {
@@ -28,3 +30,11 @@ export const searchMocks = {
         },
     ],
 };
+
+export const mockResolverArgs = {
+    root: {},
+    context: {},
+    info: {} as GraphQLResolveInfo,
+};
+
+export const mockSearchPrompt = '3 bedroom house in Austin under 500k';
