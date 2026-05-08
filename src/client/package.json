@@ -14,6 +14,7 @@
     "react": "^19.2.5",
     "react-aria-components": "^1.17.0",
     "react-dom": "^19.2.5",
+    "react-router-dom": "^7.15.0",
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^2.1.0"
