@@ -1,4 +1,4 @@
-import { QueryResolvers } from '../../../generated/types';
+import { type QueryResolvers } from '../../../generated/types';
 import { searchMocks } from './search.mocks';
 
 const searchListings: QueryResolvers['searchListings'] = (_, { prompt }) => {

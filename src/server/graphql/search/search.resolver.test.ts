@@ -1,5 +1,5 @@
-import { searchResolvers } from './search.resolver';
 import { mockResolverArgs, mockSearchPrompt } from './search.mocks';
+import { searchResolvers } from './search.resolver';
 
 describe('searchResolvers', () => {
     describe('Query.searchListings', () => {
