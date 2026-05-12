@@ -37,7 +37,7 @@
         "typescript-eslint": "^8.59.2"
     },
     "dependencies": {
-        "@tailwindcss/typography": "^0.5.19",
+        "@tailwindcss/typography": "^0.5.0-alpha.3",
         "eslint-import-resolver-typescript": "^4.4.4",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-jest": "^29.15.2",
