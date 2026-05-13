@@ -16,10 +16,10 @@ export const HomePage: FunctionComponent = () => {
             <PageWrapper>
                 <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-5xl font-bold text-brand-700 mb-4">
                             Find your next home
                         </h1>
-                        <p className="text-xl text-gray-500">
+                        <p className="text-xl text-brand-500">
                             Describe what you're looking for in plain English
                         </p>
                     </div>
