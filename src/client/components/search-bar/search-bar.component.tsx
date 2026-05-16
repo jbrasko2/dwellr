@@ -33,7 +33,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
                 onChange={setPrompt}
                 onKeyDown={handleKeyDown}
                 size="lg"
-                placeholder="3 bed house in Austin under $500k with a big backyard..."
+                placeholder="3 bed house in Austin under $500k with an in-ground pool..."
                 isDisabled={loading}
             />
             <Button
