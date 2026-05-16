@@ -1,34 +1,53 @@
 import { type GraphQLResolveInfo } from 'graphql';
 
 export const searchMocks = {
-    summary: 'Showing results for your search',
     filters: {
         location: 'Austin, TX',
+        minBeds: null,
+        maxBeds: null,
+        minBaths: null,
         maxPrice: 500000,
-        bedrooms: 3,
+        minPrice: null,
+        propertyType: null,
+        features: [],
     },
     listings: [
         {
             id: '1',
-            address: '123 Main St, Austin, TX 78701',
+            address: {
+                street: '123 Main St',
+                city: 'Austin',
+                state: 'TX',
+                zip: '78701',
+            },
             price: 450000,
-            bedrooms: 3,
-            bathrooms: 2,
-            squareFeet: 1800,
+            beds: 3,
+            baths: 2,
+            sqft: 1800,
+            propertyType: 'Single Family',
             imageUrl: 'https://placehold.co/400x300',
             listingUrl: '#',
+            description: 'Beautiful home in central Austin',
         },
         {
             id: '2',
-            address: '456 Oak Ave, Austin, TX 78702',
+            address: {
+                street: '456 Oak Ave',
+                city: 'Austin',
+                state: 'TX',
+                zip: '78702',
+            },
             price: 375000,
-            bedrooms: 3,
-            bathrooms: 1.5,
-            squareFeet: 1500,
+            beds: 3,
+            baths: 1.5,
+            sqft: 1500,
+            propertyType: 'Townhouse',
             imageUrl: 'https://placehold.co/400x300',
             listingUrl: '#',
+            description: 'Charming townhouse with modern updates',
         },
     ],
+    total: 2,
 };
 
 export const mockResolverArgs = {

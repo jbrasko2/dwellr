@@ -3,26 +3,38 @@ type Query {
 }
 
 type SearchResult {
+    filters: SearchFilters!
     listings: [Listing!]!
-    summary: String
-    filters: Filters
+    total: Int!
 }
 
 type Listing {
     id: ID!
-    address: String!
-    price: Int!
-    bedrooms: Int
-    bathrooms: Float
-    squareFeet: Int
+    address: ListingAddress!
+    price: Float!
+    beds: Int
+    baths: Float
+    sqft: Int
+    propertyType: String
     imageUrl: String
     listingUrl: String
+    description: String
 }
 
-type Filters {
+type ListingAddress {
+    street: String
+    city: String
+    state: String
+    zip: String
+}
+
+type SearchFilters {
     location: String
-    minPrice: Int
-    maxPrice: Int
-    bedrooms: Int
-    bathrooms: Float
+    minBeds: Int
+    maxBeds: Int
+    minBaths: Int
+    maxPrice: Float
+    minPrice: Float
+    propertyType: String
+    features: [String!]!
 }
