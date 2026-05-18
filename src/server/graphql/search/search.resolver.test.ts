@@ -3,7 +3,7 @@ import { searchResolvers } from './search.resolver';
 
 describe('searchResolvers', () => {
     describe('Query.searchListings', () => {
-        it('should return listings with a summary containing the prompt', async () => {
+        it('should return the correct total count', async () => {
             const result = await searchResolvers.Query.searchListings(
                 mockResolverArgs.root,
                 { prompt: mockSearchPrompt },
@@ -11,9 +11,7 @@ describe('searchResolvers', () => {
                 mockResolverArgs.info,
             );
 
-            expect(result.summary).toBe(
-                `Showing results for: "${mockSearchPrompt}"`,
-            );
+            expect(result.total).toBe(2);
         });
 
         it('should return an array of listings', async () => {

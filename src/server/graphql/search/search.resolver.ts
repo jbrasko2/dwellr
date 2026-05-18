@@ -1,11 +1,8 @@
 import { type QueryResolvers } from '../../../generated/types';
 import { searchMocks } from './search.mocks';
 
-const searchListings: QueryResolvers['searchListings'] = (_, { prompt }) => {
-    return {
-        ...searchMocks,
-        summary: `Showing results for: "${prompt}"`,
-    };
+const searchListings: QueryResolvers['searchListings'] = () => {
+    return searchMocks;
 };
 
 export const searchResolvers = {
