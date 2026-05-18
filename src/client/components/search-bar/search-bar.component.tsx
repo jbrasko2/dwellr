@@ -5,13 +5,15 @@ import { useState, type FunctionComponent } from 'react';
 export type SearchBarProps = {
     onSearch: (prompt: string) => void;
     loading?: boolean;
+    initialValue?: string;
 };
 
 export const SearchBar: FunctionComponent<SearchBarProps> = ({
     onSearch,
     loading = false,
+    initialValue = '',
 }) => {
-    const [prompt, setPrompt] = useState('');
+    const [prompt, setPrompt] = useState(initialValue);
 
     const handleSubmit = () => {
         if (prompt.trim() === '') return;
