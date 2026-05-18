@@ -12,7 +12,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@apollo/client": "^4.1.9",
     "@untitledui/icons": "^0.0.22",
+    "graphql": "^16.14.0",
     "react": "^19.2.5",
     "react-aria-components": "^1.17.0",
     "react-dom": "^19.2.5",
