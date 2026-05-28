@@ -13,7 +13,7 @@ Always respond with ONLY a valid JSON object matching this exact shape — no pr
   "maxBeds": number or null,
   "minBaths": number or null,
   "propertyType": "string or null (house, condo, townhouse, etc.)",
-  "features": ["array of strings like pool, garage, backyard, etc."]
+  "features": ["array of strings — only use exact values from this list: basement, carport, central_air, central_heat, city_view, community_swimming_pool, den_or_office, dining_room, dishwasher, energy_efficient, family_room, fireplace, garage_1_or_more, garage_2_or_more, garage_3_or_more, golf_course_view, hardwood_floors, hill_or_mountain_view, horse_facilities, lake_view, laundry_room, ocean_view, pets_allowed, single_story, spa_or_hot_tub, swimming_pool, tennis_court, two_or_more_stories, washer_dryer, waterfront"]
 }`;
 
 class ClaudeParseError extends Error {
