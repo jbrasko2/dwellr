@@ -7,5 +7,10 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true
     },
+    "watchOptions": {
+        "watchFile": "fixedPollingInterval",
+        "watchDirectory": "fixedPollingInterval",
+        "fallbackPolling": "fixedPollingInterval"
+    },
     "exclude": ["node_modules", "dist"]
 }
