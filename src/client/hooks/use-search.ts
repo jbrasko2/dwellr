@@ -11,6 +11,10 @@ export const useSearch = () => {
     const [executeSearch, { loading, error, data }] =
         useLazyQuery<SearchData>(SEARCH_LISTINGS);
 
+    const search = (prompt: string) => {
+        executeSearch({ variables: { prompt } });
+    };
+
     if (import.meta.env.VITE_USE_MOCK_DATA === 'true') {
         return {
             search: () => {},
@@ -19,10 +23,6 @@ export const useSearch = () => {
             result: mockSearchResult,
         };
     }
-
-    const search = (prompt: string) => {
-        executeSearch({ variables: { prompt } });
-    };
 
     return {
         search,
