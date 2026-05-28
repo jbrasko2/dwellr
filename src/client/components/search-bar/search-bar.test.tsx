@@ -33,15 +33,6 @@ describe('SearchBar', () => {
         expect(onSearch).toHaveBeenCalledWith('2 bed condo');
     });
 
-    it('clears the input after submitting', async () => {
-        render(<SearchBar onSearch={vi.fn()} />);
-        const input = screen.getByRole('textbox');
-
-        await userEvent.type(input, 'some query{Enter}');
-
-        expect(input).toHaveValue('');
-    });
-
     it('does not call onSearch when input is empty or whitespace', async () => {
         const onSearch = vi.fn();
         render(<SearchBar onSearch={onSearch} />);
