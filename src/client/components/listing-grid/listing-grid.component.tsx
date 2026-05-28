@@ -14,7 +14,7 @@ export const ListingGrid: FunctionComponent<ListingGridProps> = ({
     if (loading) {
         return (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[...Array(6)].map((_, i) => (
+                {Array.from({ length: 6 }).map((_, i) => (
                     <div
                         key={i}
                         className="rounded-xl bg-gray-100 animate-pulse aspect-video"
