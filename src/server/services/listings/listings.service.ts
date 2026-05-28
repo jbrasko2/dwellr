@@ -58,9 +58,7 @@ export class ListingsServiceError extends Error {
     }
 }
 
-export const buildRequestBody = (
-    filters: SearchFilters,
-): Record<string, unknown> => {
+const buildRequestBody = (filters: SearchFilters): Record<string, unknown> => {
     const body: Record<string, unknown> = {
         limit: 42,
         offset: 0,
@@ -89,8 +87,36 @@ export const buildRequestBody = (
         };
     }
 
-    if (filters.minBaths != null) {
-        body['baths'] = { min: filters.minBaths };
+    if (filters.minBaths != null || filters.maxBaths != null) {
+        body['baths'] = {
+            ...(filters.minBaths != null && { min: filters.minBaths }),
+            ...(filters.maxBaths != null && { max: filters.maxBaths }),
+        };
+    }
+
+    if (filters.minSqft != null || filters.maxSqft != null) {
+        body['sqft'] = {
+            ...(filters.minSqft != null && { min: filters.minSqft }),
+            ...(filters.maxSqft != null && { max: filters.maxSqft }),
+        };
+    }
+
+    if (filters.minLotSqft != null || filters.maxLotSqft != null) {
+        body['lot_sqft'] = {
+            ...(filters.minLotSqft != null && { min: filters.minLotSqft }),
+            ...(filters.maxLotSqft != null && { max: filters.maxLotSqft }),
+        };
+    }
+
+    if (filters.minYearBuilt != null || filters.maxYearBuilt != null) {
+        body['year_built'] = {
+            ...(filters.minYearBuilt != null && { min: filters.minYearBuilt }),
+            ...(filters.maxYearBuilt != null && { max: filters.maxYearBuilt }),
+        };
+    }
+
+    if (filters.newConstruction === true) {
+        body['new_construction'] = true;
     }
 
     if (filters.propertyType) {
