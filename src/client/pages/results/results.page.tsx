@@ -15,7 +15,7 @@ export const ResultsPage: FunctionComponent = () => {
         if (prompt) {
             search(prompt);
         }
-    });
+    }, [prompt]);
 
     const handleSearch = (newPrompt: string) => {
         setSearchParams({ q: newPrompt });
