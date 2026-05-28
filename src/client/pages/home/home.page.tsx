@@ -8,7 +8,7 @@ export const HomePage: FunctionComponent = () => {
     const navigate = useNavigate();
 
     const handleSearch = (prompt: string) => {
-        console.log('navigate to results');
+        navigate(`/results?q=${encodeURIComponent(prompt)}`);
     };
     return (
         <>
