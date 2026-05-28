@@ -8,10 +8,28 @@ export const SEARCH_LISTINGS = gql`
                 minBeds
                 maxBeds
                 minBaths
-                maxPrice
+                maxBaths
                 minPrice
+                maxPrice
+                minSqft
+                maxSqft
+                minLotSqft
+                maxLotSqft
+                minYearBuilt
+                maxYearBuilt
+                newConstruction
                 propertyType
                 features
+                status
+                locationRadius
+                noHoaFee
+                maxHoaFee
+                foreclosure
+                hasTour
+                dogs
+                cats
+                sortField
+                sortDirection
             }
             listings {
                 id
