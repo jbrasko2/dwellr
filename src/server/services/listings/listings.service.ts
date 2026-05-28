@@ -126,7 +126,7 @@ export const mapListing = (raw: RapidApiListing): Listing | null => {
         sqft: raw.description?.sqft ?? null,
         propertyType: raw.description?.type ?? null,
         description: raw.description?.text ?? null,
-        imageUrl: raw.primary_photo?.href ?? null,
+        imageUrl: raw.primary_photo?.href?.replace(/s\.jpg$/, 'od.jpg') ?? null,
         listingUrl: raw.href ?? null,
     };
 };
