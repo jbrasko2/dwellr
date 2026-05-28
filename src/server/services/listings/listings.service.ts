@@ -70,7 +70,11 @@ const buildRequestBody = (filters: SearchFilters): Record<string, unknown> => {
     };
 
     if (filters.location) {
-        body['city'] = filters.location;
+        if (/^\d{5}$/.test(filters.location)) {
+            body['postal_code'] = filters.location;
+        } else {
+            body['city'] = filters.location;
+        }
     }
 
     if (filters.minPrice != null || filters.maxPrice != null) {
