@@ -1,4 +1,4 @@
-import { getAnthropicClient } from '../lib/anthropic-client';
+import { getAnthropicClient } from '../../lib/anthropic-client';
 import { parsePromptToFilters } from './claude.service';
 
 jest.mock('../lib/anthropic-client');

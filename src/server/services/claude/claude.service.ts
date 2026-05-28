@@ -1,5 +1,5 @@
-import { type SearchFilters } from '../../generated/types';
-import { getAnthropicClient } from '../lib/anthropic-client';
+import { type SearchFilters } from '../../../generated/types';
+import { getAnthropicClient } from '../../lib/anthropic-client';
 
 const SYSTEM_PROMPT = `You are a real estate search assistant. Your job is to parse natural language home search queries into structured JSON filters.
 
