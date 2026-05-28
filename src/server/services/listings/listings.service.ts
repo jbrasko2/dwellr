@@ -1,4 +1,5 @@
-import { type Listing } from '../../../generated/types';
+import { type SearchFilters, type Listing } from '../../../generated/types';
+import { getRapidApiHeaders } from '../../lib/rapidapi-client';
 
 interface RapidApiAddress {
     line?: string | null;
@@ -69,4 +70,32 @@ export const mapListing = (raw: RapidApiListing): Listing | null => {
         imageUrl: raw.primary_photo?.href ?? null,
         listingUrl: raw.href ?? null,
     };
+};
+
+export const fetchListings = async (
+    filters: SearchFilters,
+): Promise<{ listings: Listing[]; total: number }> => {
+    const response = await fetch(`${BASE_URL}/properties/v3/list`, {
+        method: 'POST',
+        headers: getRapidApiHeaders(),
+        body: JSON.stringify(buildRequestBody(filters)),
+    });
+
+    if (!response.ok) {
+        throw new ListingsServiceError(
+            `RapidAPI request failed: ${response.statusText}`,
+            response.status,
+        );
+    }
+
+    const json: RapidApiResponse = await response.json();
+    const homeSearch = json.data?.home_search;
+    const rawListings = homeSearch?.results ?? [];
+    const total = homeSearch?.count ?? 0;
+
+    const listings = rawListings
+        .map(mapListing)
+        .filter((l): l is Listing => l !== null);
+
+    return { listings, total };
 };
