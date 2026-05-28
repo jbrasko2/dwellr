@@ -59,7 +59,7 @@ describe('useSearch', () => {
             total: 0,
             filters: { features: [] },
         };
-        queryState.data = { search: mockSearch };
+        queryState.data = { searchListings: mockSearch };
         const { result } = renderHook(() => useSearch());
         expect(result.current.result).toEqual(mockSearch);
     });
