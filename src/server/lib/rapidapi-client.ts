@@ -1,5 +1,7 @@
 import { ListingsServiceError } from '../services/listings/listings.service';
 
+export const BASE_URL = 'https://realty-in-us.p.rapidapi.com';
+
 let _headers: Record<string, string> | null = null;
 
 export function getRapidApiHeaders(): Record<string, string> {
