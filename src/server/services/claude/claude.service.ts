@@ -12,6 +12,14 @@ Always respond with ONLY a valid JSON object matching this exact shape — no pr
   "minBeds": number or null,
   "maxBeds": number or null,
   "minBaths": number or null,
+  "maxBaths": number or null (set equal to minBaths when user specifies an exact bath count, null when they say 'at least'),
+  "minSqft": number or null,
+  "maxSqft": number or null,
+  "minLotSqft": number or null,
+  "maxLotSqft": number or null,
+  "minYearBuilt": number or null,
+  "maxYearBuilt": number or null,
+  "newConstruction": boolean or null (true only when user explicitly asks for new construction),
   "propertyType": "string or null (house, condo, townhouse, etc.)",
   "features": ["array of strings — only use exact values from this list: basement, carport, central_air, central_heat, city_view, community_swimming_pool, den_or_office, dining_room, dishwasher, energy_efficient, family_room, fireplace, garage_1_or_more, garage_2_or_more, garage_3_or_more, golf_course_view, hardwood_floors, hill_or_mountain_view, horse_facilities, lake_view, laundry_room, ocean_view, pets_allowed, single_story, spa_or_hot_tub, swimming_pool, tennis_court, two_or_more_stories, washer_dryer, waterfront"]
 }`;
