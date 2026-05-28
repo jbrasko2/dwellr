@@ -1,6 +1,16 @@
 import { type SearchFilters, type Listing } from '../../../generated/types';
 import { getRapidApiHeaders } from '../../lib/rapidapi-client';
 
+const PROPERTY_TYPE_MAP: Record<string, string> = {
+    house: 'single_family',
+    condo: 'condos',
+    townhouse: 'townhomes',
+    multi_family: 'multi_family',
+    land: 'land',
+    mobile: 'mobile',
+    farm: 'farm',
+};
+
 interface RapidApiAddress {
     line?: string | null;
     city?: string | null;
@@ -88,7 +98,7 @@ export const fetchListings = async (
         );
     }
 
-    const json: RapidApiResponse = await response.json();
+    const json: RapidApiResponse = JSON.parse(await response.text());
     const homeSearch = json.data?.home_search;
     const rawListings = homeSearch?.results ?? [];
     const total = homeSearch?.count ?? 0;
@@ -98,4 +108,53 @@ export const fetchListings = async (
         .filter((l): l is Listing => l !== null);
 
     return { listings, total };
+};
+
+export const buildRequestBody = (
+    filters: SearchFilters,
+): Record<string, unknown> => {
+    const body: Record<string, unknown> = {
+        limit: 42,
+        offset: 0,
+        status: ['for_sale'],
+        sort: {
+            direction: 'desc',
+            field: 'list_date',
+        },
+    };
+
+    if (filters.location) {
+        body['city'] = filters.location;
+    }
+
+    if (filters.minPrice != null || filters.maxPrice != null) {
+        body['list_price'] = {
+            ...(filters.minPrice != null && { min: filters.minPrice }),
+            ...(filters.maxPrice != null && { max: filters.maxPrice }),
+        };
+    }
+
+    if (filters.minBeds != null || filters.maxBeds != null) {
+        body['beds'] = {
+            ...(filters.minBeds != null && { min: filters.minBeds }),
+            ...(filters.maxBeds != null && { max: filters.maxBeds }),
+        };
+    }
+
+    if (filters.minBaths != null) {
+        body['baths'] = { min: filters.minBaths };
+    }
+
+    if (filters.propertyType) {
+        const mapped = PROPERTY_TYPE_MAP[filters.propertyType.toLowerCase()];
+        if (mapped) {
+            body['type'] = [mapped];
+        }
+    }
+
+    if (filters.features.length > 0) {
+        body['keywords'] = filters.features;
+    }
+
+    return body;
 };
