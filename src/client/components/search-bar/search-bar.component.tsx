@@ -18,7 +18,6 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
     const handleSubmit = () => {
         if (prompt.trim() === '') return;
         onSearch(prompt);
-        setPrompt('');
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
