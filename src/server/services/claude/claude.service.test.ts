@@ -1,7 +1,7 @@
 import { getAnthropicClient } from '../../lib/anthropic-client';
 import { parsePromptToFilters } from './claude.service';
 
-jest.mock('../lib/anthropic-client');
+jest.mock('../../lib/anthropic-client');
 
 const mockCreate = jest.fn();
 const mockGetAnthropicClient = getAnthropicClient as jest.MockedFunction<

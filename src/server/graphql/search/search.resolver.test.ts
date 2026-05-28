@@ -1,5 +1,29 @@
-import { mockResolverArgs, mockSearchPrompt } from './search.mocks';
+import { parsePromptToFilters } from '../../services/claude/claude.service';
+import { fetchListings } from '../../services/listings/listings.service';
+import {
+    mockResolverArgs,
+    mockSearchPrompt,
+    searchMocks,
+} from './search.mocks';
 import { searchResolvers } from './search.resolver';
+
+jest.mock('../../services/claude/claude.service');
+jest.mock('../../services/listings/listings.service');
+
+const mockParsePrompt = parsePromptToFilters as jest.MockedFunction<
+    typeof parsePromptToFilters
+>;
+const mockFetchListings = fetchListings as jest.MockedFunction<
+    typeof fetchListings
+>;
+
+beforeEach(() => {
+    mockParsePrompt.mockResolvedValue(searchMocks.filters);
+    mockFetchListings.mockResolvedValue({
+        listings: searchMocks.listings,
+        total: searchMocks.total,
+    });
+});
 
 describe('searchResolvers', () => {
     describe('Query.searchListings', () => {
