@@ -4,7 +4,7 @@ import { SEARCH_LISTINGS } from '@/grapqhl/queries/search';
 import { mockSearchResult } from '@/pages/results/results.mock';
 
 export type SearchData = {
-    search: SearchResult;
+    searchListings: SearchResult;
 };
 
 export const useSearch = () => {
@@ -28,6 +28,6 @@ export const useSearch = () => {
         search,
         loading,
         error,
-        result: data?.search ?? null,
+        result: data?.searchListings ?? null,
     };
 };

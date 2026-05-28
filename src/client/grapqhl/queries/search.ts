@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const SEARCH_LISTINGS = gql`
     query SearchListings($prompt: String!) {
-        search(prompt: $prompt) {
+        searchListings(prompt: $prompt) {
             filters {
                 location
                 minBeds
