@@ -10,7 +10,7 @@
     "watchOptions": {
         "watchFile": "fixedPollingInterval",
         "watchDirectory": "fixedPollingInterval",
-        "fallbackPolling": "fixedPollingInterval"
+        "fallbackPolling": "fixedInterval"
     },
     "exclude": ["node_modules", "dist"]
 }
