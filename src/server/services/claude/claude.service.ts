@@ -6,7 +6,8 @@ const SYSTEM_PROMPT = `You are a real estate search assistant. Your job is to pa
 Always respond with ONLY a valid JSON object matching this exact shape — no preamble, no explanation, no markdown:
 
 {
-  "location": "string (required — city, neighborhood, or zip code)",
+  "location": "string (required — city name, 'City, ST' with 2-letter state code, state code alone, or 5-digit zip code)",
+  "locationRadius": number or null (radius in miles when user says 'within X miles of [place]' — pairs with location),
   "minPrice": number or null,
   "maxPrice": number or null,
   "minBeds": number or null,
@@ -21,7 +22,16 @@ Always respond with ONLY a valid JSON object matching this exact shape — no pr
   "maxYearBuilt": number or null,
   "newConstruction": boolean or null (true only when user explicitly asks for new construction),
   "propertyType": "string or null (house, condo, townhouse, etc.)",
-  "features": ["array of strings — only use exact values from this list: basement, carport, central_air, central_heat, city_view, community_swimming_pool, den_or_office, dining_room, dishwasher, energy_efficient, family_room, fireplace, garage_1_or_more, garage_2_or_more, garage_3_or_more, golf_course_view, hardwood_floors, hill_or_mountain_view, horse_facilities, lake_view, laundry_room, ocean_view, pets_allowed, single_story, spa_or_hot_tub, swimming_pool, tennis_court, two_or_more_stories, washer_dryer, waterfront"]
+  "status": "for_sale" | "for_rent" | "sold" | "new_community" | null (default null — use for_rent when user asks about renting/rentals/apartments to rent),
+  "foreclosure": boolean or null (true when user asks for foreclosures or bank-owned properties),
+  "noHoaFee": boolean or null (true when user says 'no HOA'),
+  "maxHoaFee": number or null (maximum monthly HOA fee in dollars),
+  "hasTour": boolean or null (true when user asks for virtual tours or 3D tours),
+  "dogs": boolean or null (true when user mentions dogs or dog-friendly),
+  "cats": boolean or null (true when user mentions cats or cat-friendly),
+  "sortField": "list_price" | "list_date" | "beds" | "lot_sqft" | "photo_count" | null (use when user asks to sort/order results),
+  "sortDirection": "asc" | "desc" | null (asc for cheapest/smallest/oldest first, desc for most expensive/largest/newest first),
+  "features": ["array of strings — only use exact values from this list: basement, carport, central_air, central_heat, city_view, community_swimming_pool, den_or_office, dining_room, dishwasher, energy_efficient, family_room, fireplace, garage_1_or_more, garage_2_or_more, garage_3_or_more, golf_course_view, hardwood_floors, hill_or_mountain_view, horse_facilities, lake_view, laundry_room, ocean_view, single_story, spa_or_hot_tub, swimming_pool, tennis_court, two_or_more_stories, washer_dryer, waterfront"]
 }`;
 
 class ClaudeParseError extends Error {

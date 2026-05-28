@@ -38,12 +38,56 @@ describe('buildRequestBody', () => {
         });
     });
 
-    it('maps location to city', () => {
+    it('parses "City, ST" into city and state_code', () => {
         const body = buildRequestBody({
             ...baseFilters,
             location: 'Austin, TX',
         });
-        expect(body['city']).toBe('Austin, TX');
+        expect(body['city']).toBe('Austin');
+        expect(body['state_code']).toBe('TX');
+    });
+
+    it('maps plain city name to city', () => {
+        const body = buildRequestBody({
+            ...baseFilters,
+            location: 'Austin',
+        });
+        expect(body['city']).toBe('Austin');
+        expect(body).not.toHaveProperty('state_code');
+    });
+
+    it('maps 5-digit zip to postal_code', () => {
+        const body = buildRequestBody({ ...baseFilters, location: '78701' });
+        expect(body['postal_code']).toBe('78701');
+        expect(body).not.toHaveProperty('city');
+    });
+
+    it('maps ZIP+4 to postal_code stripping the extension', () => {
+        const body = buildRequestBody({
+            ...baseFilters,
+            location: '78701-1234',
+        });
+        expect(body['postal_code']).toBe('78701');
+    });
+
+    it('maps 2-letter state code alone to state_code', () => {
+        const body = buildRequestBody({ ...baseFilters, location: 'TX' });
+        expect(body['state_code']).toBe('TX');
+        expect(body).not.toHaveProperty('city');
+    });
+
+    it('uses search_location when locationRadius is set', () => {
+        const body = buildRequestBody({
+            ...baseFilters,
+            location: 'Austin, TX',
+            locationRadius: 25,
+        });
+        expect(body['search_location']).toEqual({
+            radius: 25,
+            location: 'Austin, TX',
+        });
+        expect(body).not.toHaveProperty('city');
+        expect(body).not.toHaveProperty('postal_code');
     });
 
     it('maps minPrice only', () => {
@@ -127,6 +171,55 @@ describe('buildRequestBody', () => {
     it('omits keywords when features is empty', () => {
         const body = buildRequestBody(baseFilters);
         expect(body).not.toHaveProperty('keywords');
+    });
+
+    it('uses status filter when set', () => {
+        const body = buildRequestBody({ ...baseFilters, status: 'for_rent' });
+        expect(body['status']).toEqual(['for_rent']);
+    });
+
+    it('defaults status to for_sale when not set', () => {
+        const body = buildRequestBody(baseFilters);
+        expect(body['status']).toEqual(['for_sale']);
+    });
+
+    it('uses sortField and sortDirection when set', () => {
+        const body = buildRequestBody({
+            ...baseFilters,
+            sortField: 'list_price',
+            sortDirection: 'asc',
+        });
+        expect(body['sort']).toEqual({ direction: 'asc', field: 'list_price' });
+    });
+
+    it('sets foreclosure flag', () => {
+        const body = buildRequestBody({ ...baseFilters, foreclosure: true });
+        expect(body['foreclosure']).toBe(true);
+    });
+
+    it('sets no_hoa_fee flag', () => {
+        const body = buildRequestBody({ ...baseFilters, noHoaFee: true });
+        expect(body['no_hoa_fee']).toBe(true);
+    });
+
+    it('sets hoa_fee max', () => {
+        const body = buildRequestBody({ ...baseFilters, maxHoaFee: 200 });
+        expect(body['hoa_fee']).toEqual({ max: 200 });
+    });
+
+    it('sets has_tour flag', () => {
+        const body = buildRequestBody({ ...baseFilters, hasTour: true });
+        expect(body['has_tour']).toBe(true);
+    });
+
+    it('sets dogs and cats flags', () => {
+        const body = buildRequestBody({
+            ...baseFilters,
+            dogs: true,
+            cats: true,
+        });
+        expect(body['dogs']).toBe(true);
+        expect(body['cats']).toBe(true);
     });
 });
 

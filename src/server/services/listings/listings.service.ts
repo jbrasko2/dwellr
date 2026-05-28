@@ -1,6 +1,60 @@
 import { type SearchFilters, type Listing } from '../../../generated/types';
 import { BASE_URL, getRapidApiHeaders } from '../../lib/rapidapi-client';
 
+const US_STATE_CODES = new Set([
+    'AL',
+    'AK',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HI',
+    'ID',
+    'IL',
+    'IN',
+    'IA',
+    'KS',
+    'KY',
+    'LA',
+    'ME',
+    'MD',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MT',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY',
+    'DC',
+]);
+
 const PROPERTY_TYPE_MAP: Record<string, string> = {
     house: 'single_family',
     condo: 'condos',
@@ -58,23 +112,60 @@ export class ListingsServiceError extends Error {
     }
 }
 
-const buildRequestBody = (filters: SearchFilters): Record<string, unknown> => {
+const applyLocation = (
+    location: string,
+    radius: number | null | undefined,
+    body: Record<string, unknown>,
+) => {
+    const trimmed = location.trim();
+
+    if (radius != null) {
+        body['search_location'] = { radius, location: trimmed };
+        return;
+    }
+
+    // ZIP code: 5-digit or ZIP+4
+    if (/^\d{5}(-\d{4})?$/.test(trimmed)) {
+        body['postal_code'] = trimmed.slice(0, 5);
+        return;
+    }
+
+    // "City, ST" pattern
+    const cityStateMatch = trimmed.match(/^(.+),\s*([A-Za-z]{2})$/);
+    if (cityStateMatch) {
+        const stateCode = cityStateMatch[2].toUpperCase();
+        if (US_STATE_CODES.has(stateCode)) {
+            body['city'] = cityStateMatch[1].trim();
+            body['state_code'] = stateCode;
+            return;
+        }
+    }
+
+    // State code alone
+    const upper = trimmed.toUpperCase();
+    if (trimmed.length === 2 && US_STATE_CODES.has(upper)) {
+        body['state_code'] = upper;
+        return;
+    }
+
+    body['city'] = trimmed;
+};
+
+export const buildRequestBody = (
+    filters: SearchFilters,
+): Record<string, unknown> => {
     const body: Record<string, unknown> = {
         limit: 42,
         offset: 0,
-        status: ['for_sale'],
+        status: [filters.status ?? 'for_sale'],
         sort: {
-            direction: 'desc',
-            field: 'list_date',
+            direction: filters.sortDirection ?? 'desc',
+            field: filters.sortField ?? 'list_date',
         },
     };
 
     if (filters.location) {
-        if (/^\d{5}$/.test(filters.location)) {
-            body['postal_code'] = filters.location;
-        } else {
-            body['city'] = filters.location;
-        }
+        applyLocation(filters.location, filters.locationRadius, body);
     }
 
     if (filters.minPrice != null || filters.maxPrice != null) {
@@ -119,8 +210,15 @@ const buildRequestBody = (filters: SearchFilters): Record<string, unknown> => {
         };
     }
 
-    if (filters.newConstruction === true) {
-        body['new_construction'] = true;
+    if (filters.newConstruction === true) body['new_construction'] = true;
+    if (filters.foreclosure === true) body['foreclosure'] = true;
+    if (filters.hasTour === true) body['has_tour'] = true;
+    if (filters.dogs === true) body['dogs'] = true;
+    if (filters.cats === true) body['cats'] = true;
+    if (filters.noHoaFee === true) body['no_hoa_fee'] = true;
+
+    if (filters.maxHoaFee != null) {
+        body['hoa_fee'] = { max: filters.maxHoaFee };
     }
 
     if (filters.propertyType) {

@@ -45,4 +45,14 @@ type SearchFilters {
     newConstruction: Boolean
     propertyType: String
     features: [String!]!
+    status: String
+    locationRadius: Int
+    noHoaFee: Boolean
+    maxHoaFee: Float
+    foreclosure: Boolean
+    hasTour: Boolean
+    dogs: Boolean
+    cats: Boolean
+    sortField: String
+    sortDirection: String
 }
