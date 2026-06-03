@@ -1,6 +1,6 @@
 import type { FunctionComponent } from 'react';
-import type { Listing } from '../../../generated/types';
 import { ListingCard } from '@/components/listing-card/listing-card.component';
+import type { Listing } from '@generated/types';
 
 export type ListingGridProps = {
     listings: Listing[];

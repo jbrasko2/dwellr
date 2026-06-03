@@ -23,8 +23,9 @@
 
         /* Path aliases */
         "paths": {
-            "@/*": ["./*"]
+            "@/*": ["./*"],
+            "@generated/*": ["../generated/*"]
         }
     },
-    "include": ["."]
+    "include": [".", "../generated"]
 }

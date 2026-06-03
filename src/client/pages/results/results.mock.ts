@@ -1,7 +1,7 @@
-import type { SearchResult } from '../../../generated/types';
-
 // VITE_USE_MOCK_DATA=true npm run dev:client
 // http://localhost:5173/results?q=anything
+
+import type { SearchResult } from '@generated/types';
 
 export const mockSearchResult: SearchResult = {
     listings: [

@@ -1,6 +1,6 @@
 import { formatAddress, formatPrice } from '@/helpers/formatters';
+import type { Listing } from '@generated/types';
 import type { FunctionComponent } from 'react';
-import type { Listing } from '../../../generated/types';
 
 export type ListingCardProps = {
     listing: Listing;

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import type { Listing } from '../../../generated/types';
 import { ListingCard } from './listing-card.component';
+import type { Listing } from '@generated/types';
 
 const baseListing: Listing = {
     id: '1',

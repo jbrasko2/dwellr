@@ -8,6 +8,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': resolve(__dirname, '.'),
+            '@generated': resolve(__dirname, '../generated'),
         },
     },
     test: {
