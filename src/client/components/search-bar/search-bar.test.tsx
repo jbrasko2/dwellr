@@ -1,7 +1,7 @@
+import { SearchBar } from '@/components/search-bar/search-bar.component';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { SearchBar } from './search-bar.component';
 
 describe('SearchBar', () => {
     it('renders input and search button', () => {

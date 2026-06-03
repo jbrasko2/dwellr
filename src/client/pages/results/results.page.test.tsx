@@ -5,8 +5,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('@/hooks/use-search');
 
 import { useSearch } from '@/hooks/use-search';
-import { ResultsPage } from './results.page';
-import { mockSearchResult } from './results.mock';
+import { ResultsPage } from '@/pages/results/results.page';
+import { mockSearchResult } from '@/pages/results/results.mock';
 
 const mockUseSearch = vi.mocked(useSearch);
 

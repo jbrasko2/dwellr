@@ -1,5 +1,5 @@
+import { formatAddress, formatPrice } from '@/helpers/formatters';
 import { describe, expect, it } from 'vitest';
-import { formatAddress, formatPrice } from './formatters';
 
 describe('formatPrice', () => {
     it('formats a whole dollar amount with commas and no cents', () => {

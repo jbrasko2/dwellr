@@ -1,3 +1,4 @@
+import { useSearch } from '@/hooks/use-search';
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -14,8 +15,6 @@ const { executeSearchMock, queryState } = vi.hoisted(() => {
 vi.mock('@apollo/client/react', () => ({
     useLazyQuery: () => [executeSearchMock, queryState],
 }));
-
-import { useSearch } from './use-search';
 
 describe('useSearch', () => {
     beforeEach(() => {
