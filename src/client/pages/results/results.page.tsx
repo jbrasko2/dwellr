@@ -1,21 +1,15 @@
+import type { Listing } from '@generated/types';
+import { useEffect, useState, type FunctionComponent } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Header } from '@/components/layout/header.component';
 import { PageWrapper } from '@/components/layout/page-wrapper.component';
 import { ListingGrid } from '@/components/listing-grid/listing-grid.component';
 import { SearchBar } from '@/components/search-bar/search-bar.component';
+import {
+    SortDropdown,
+    type SortKey,
+} from '@/components/sort-dropdown/sort-dropdown.component';
 import { useSearch } from '@/hooks/use-search';
-import type { Listing } from '@generated/types';
-import { useEffect, useState, type FunctionComponent } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
-type SortKey =
-    | 'price_asc'
-    | 'price_desc'
-    | 'beds_asc'
-    | 'beds_desc'
-    | 'baths_asc'
-    | 'baths_desc'
-    | 'sqft_asc'
-    | 'sqft_desc';
 
 const sortListings = (listings: Listing[], sortKey: SortKey): Listing[] => {
     return [...listings].sort((a, b) => {
@@ -52,7 +46,6 @@ export const ResultsPage: FunctionComponent = () => {
             ? sortListings(result.listings, sortKey)
             : result.listings
         : [];
-    
 
     useEffect(() => {
         if (prompt) {
@@ -80,12 +73,25 @@ export const ResultsPage: FunctionComponent = () => {
                         </p>
                     )}
                     {result && (
-                        <ListingGrid
-                            listings={
-                                sortKey ? sortedListings : result.listings
-                            }
-                            loading={loading}
-                        />
+                        <>
+                            <div className="flex items-center justify-between">
+                                <p className="text-sm text-secondary">
+                                    {result.listings.length} listing
+                                    {result.listings.length !== 1
+                                        ? 's'
+                                        : ''}{' '}
+                                    found
+                                </p>
+                                <SortDropdown
+                                    value={sortKey}
+                                    onChange={setSortKey}
+                                />
+                            </div>
+                            <ListingGrid
+                                listings={sortedListings}
+                                loading={loading}
+                            />
+                        </>
                     )}
                 </div>
             </PageWrapper>
