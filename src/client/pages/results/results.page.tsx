@@ -1,6 +1,7 @@
-import type { Listing } from '@generated/types';
+import type { Listing, SearchFiltersInput } from '@generated/types';
 import { useEffect, useState, type FunctionComponent } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { FilterPills } from '@/components/filter-pills/filter-pills.component';
 import { Header } from '@/components/layout/header.component';
 import { PageWrapper } from '@/components/layout/page-wrapper.component';
 import { ListingGrid } from '@/components/listing-grid/listing-grid.component';
@@ -58,7 +59,7 @@ export const ResultsPage: FunctionComponent = () => {
 
     useEffect(() => {
         if (prompt) {
-            search(prompt);
+            search({ prompt });
         }
     }, [prompt]);
 
@@ -70,6 +71,11 @@ export const ResultsPage: FunctionComponent = () => {
     const handleSortChange = (key: SortKey | null) => {
         setSortKey(key);
         setCurrentPage(1);
+    };
+
+    const handleRemoveFilter = (updatedFilters: SearchFiltersInput) => {
+        setCurrentPage(1);
+        search({ filters: updatedFilters });
     };
 
     return (
@@ -89,6 +95,10 @@ export const ResultsPage: FunctionComponent = () => {
                     )}
                     {result && (
                         <>
+                            <FilterPills
+                                filters={result.filters}
+                                onRemove={handleRemoveFilter}
+                            />
                             <div className="flex items-center justify-between">
                                 <p className="text-sm text-secondary">
                                     {result.listings.length} listing

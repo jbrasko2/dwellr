@@ -6,9 +6,17 @@ const searchListings: QueryResolvers['searchListings'] = async (
     _,
     { prompt, filters },
 ) => {
-    const resolvedFilters = filters ?? (await parsePromptToFilters(prompt));
-    const { listings, total } = await fetchListings(resolvedFilters);
+    if (filters) {
+        const { listings, total } = await fetchListings(filters);
+        return { filters, listings, total };
+    }
 
+    if (!prompt) {
+        throw new Error('Either prompt or filters must be provided');
+    }
+
+    const resolvedFilters = await parsePromptToFilters(prompt);
+    const { listings, total } = await fetchListings(resolvedFilters);
     return { filters: resolvedFilters, listings, total };
 };
 
