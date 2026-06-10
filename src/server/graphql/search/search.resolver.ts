@@ -4,12 +4,12 @@ import { fetchListings } from '../../services/listings/listings.service';
 
 const searchListings: QueryResolvers['searchListings'] = async (
     _,
-    { prompt },
+    { prompt, filters },
 ) => {
-    const filters = await parsePromptToFilters(prompt);
-    const { listings, total } = await fetchListings(filters);
+    const resolvedFilters = filters ?? (await parsePromptToFilters(prompt));
+    const { listings, total } = await fetchListings(resolvedFilters);
 
-    return { filters, listings, total };
+    return { filters: resolvedFilters, listings, total };
 };
 
 export const searchResolvers = {
