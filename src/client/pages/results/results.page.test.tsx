@@ -47,7 +47,7 @@ describe('ResultsPage', () => {
         const search = vi.fn();
         mockUseSearch.mockReturnValue({ ...defaultState, search });
         renderPage('3 bed house');
-        expect(search).toHaveBeenCalledWith('3 bed house');
+        expect(search).toHaveBeenCalledWith({ prompt: '3 bed house' });
     });
 
     it('does not call search when the query param is empty', () => {

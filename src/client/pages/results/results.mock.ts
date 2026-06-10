@@ -76,13 +76,11 @@ export const mockSearchResult: SearchResult = {
     ],
     total: 4,
     filters: {
-        features: [],
+        features: ['garage'],
         location: 'Austin, TX',
         minBeds: 2,
-        maxBeds: null,
-        minBaths: null,
-        minPrice: null,
-        maxPrice: null,
-        propertyType: null,
+        minPrice: 400000,
+        maxPrice: 900000,
+        propertyType: 'Single Family',
     },
 };

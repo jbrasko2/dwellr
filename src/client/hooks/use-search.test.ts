@@ -45,7 +45,7 @@ describe('useSearch', () => {
     it('calls executeSearch with the prompt as a variable', () => {
         const { result } = renderHook(() => useSearch());
         act(() => {
-            result.current.search('3 bed in Austin');
+            result.current.search({ prompt: '3 bed in Austin' });
         });
         expect(executeSearchMock).toHaveBeenCalledWith({
             variables: { prompt: '3 bed in Austin' },
