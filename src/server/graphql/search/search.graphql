@@ -1,5 +1,5 @@
 type Query {
-    searchListings(prompt: String!): SearchResult!
+    searchListings(prompt: String!, filters: SearchFiltersInput): SearchResult!
 }
 
 type SearchResult {
@@ -29,6 +29,35 @@ type ListingAddress {
 }
 
 type SearchFilters {
+    location: String
+    minBeds: Int
+    maxBeds: Int
+    minBaths: Int
+    maxBaths: Int
+    minPrice: Float
+    maxPrice: Float
+    minSqft: Int
+    maxSqft: Int
+    minLotSqft: Int
+    maxLotSqft: Int
+    minYearBuilt: Int
+    maxYearBuilt: Int
+    newConstruction: Boolean
+    propertyType: String
+    features: [String!]!
+    status: String
+    locationRadius: Int
+    noHoaFee: Boolean
+    maxHoaFee: Float
+    foreclosure: Boolean
+    hasTour: Boolean
+    dogs: Boolean
+    cats: Boolean
+    sortField: String
+    sortDirection: String
+}
+
+input SearchFiltersInput {
     location: String
     minBeds: Int
     maxBeds: Int
