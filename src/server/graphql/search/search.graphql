@@ -1,5 +1,5 @@
 type Query {
-    searchListings(prompt: String!, filters: SearchFiltersInput): SearchResult!
+    searchListings(prompt: String, filters: SearchFiltersInput): SearchResult!
 }
 
 type SearchResult {
