@@ -1,7 +1,7 @@
 import { HomePage } from '@/pages/home/home.page';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const renderPage = () =>
     render(
@@ -10,16 +10,27 @@ const renderPage = () =>
         </MemoryRouter>,
     );
 
+const advancePastTyping = async () => {
+    await act(async () => {
+        vi.advanceTimersByTime(3500);
+    });
+};
+
 describe('HomePage', () => {
-    it('renders the main heading', () => {
+    beforeEach(() => vi.useFakeTimers());
+    afterEach(() => vi.useRealTimers());
+
+    it('renders the main heading', async () => {
         renderPage();
+        await advancePastTyping();
         expect(
             screen.getByRole('heading', { name: 'Find your next home' }),
         ).toBeInTheDocument();
     });
 
-    it('renders the descriptive subheading', () => {
+    it('renders the descriptive subheading', async () => {
         renderPage();
+        await advancePastTyping();
         expect(
             screen.getByText(
                 "Describe what you're looking for in plain English",
