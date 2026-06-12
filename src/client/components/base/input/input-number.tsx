@@ -1,7 +1,7 @@
 'use client';
 
-import { type ReactNode, type Ref, createContext, useContext } from 'react';
 import { ChevronDown, ChevronUp, Minus, Plus } from '@untitledui/icons';
+import { type ReactNode, type Ref, createContext, useContext } from 'react';
 import {
     Button as AriaButton,
     type DateFieldProps as AriaDateFieldProps,
@@ -12,10 +12,10 @@ import {
     type NumberFieldProps as AriaNumberFieldProps,
     type DateValue,
 } from 'react-aria-components';
-import { cx } from '@/utils/cx';
 import { Button } from '../buttons/button';
 import { HintText } from './hint-text';
 import { Label } from './label';
+import { cx } from '@/utils/cx';
 
 const NumberFieldContext = createContext<{
     size?: 'sm' | 'md' | 'lg';
@@ -34,6 +34,7 @@ const styles = {
 export interface InputNumberBaseProps extends AriaNumberFieldProps {
     /**
      * Input size.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -105,9 +106,9 @@ export const InputNumberBase = ({
                 <Button
                     size={size}
                     iconLeading={Minus}
-                    slot='decrement'
-                    color='tertiary'
-                    className='static h-full rounded-r-none'
+                    slot="decrement"
+                    color="tertiary"
+                    className="static h-full rounded-r-none"
                 />
             )}
 
@@ -128,9 +129,9 @@ export const InputNumberBase = ({
                 <Button
                     size={size}
                     iconLeading={Plus}
-                    slot='increment'
-                    color='tertiary'
-                    className='static h-full rounded-l-none'
+                    slot="increment"
+                    color="tertiary"
+                    className="static h-full rounded-l-none"
                 />
             )}
 
@@ -142,8 +143,8 @@ export const InputNumberBase = ({
                     )}
                 >
                     <AriaButton
-                        slot='increment'
-                        className='flex flex-1 cursor-pointer items-center justify-center text-fg-quaternary outline-brand transition duration-100 ease-linear hover:bg-primary_hover hover:text-fg-quaternary_hover disabled:cursor-not-allowed disabled:opacity-50'
+                        slot="increment"
+                        className="flex flex-1 cursor-pointer items-center justify-center text-fg-quaternary outline-brand transition duration-100 ease-linear hover:bg-primary_hover hover:text-fg-quaternary_hover disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         <ChevronUp
                             className={cx(
@@ -153,8 +154,8 @@ export const InputNumberBase = ({
                         />
                     </AriaButton>
                     <AriaButton
-                        slot='decrement'
-                        className='flex flex-1 cursor-pointer items-center justify-center border-t border-primary text-fg-quaternary outline-brand transition duration-100 ease-linear hover:bg-primary_hover hover:text-fg-quaternary_hover disabled:cursor-not-allowed disabled:opacity-50'
+                        slot="decrement"
+                        className="flex flex-1 cursor-pointer items-center justify-center border-t border-primary text-fg-quaternary outline-brand transition duration-100 ease-linear hover:bg-primary_hover hover:text-fg-quaternary_hover disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         <ChevronDown
                             className={cx(

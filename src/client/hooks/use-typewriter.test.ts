@@ -1,6 +1,6 @@
-import { useTypewriter } from '@/hooks/use-typewriter';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { useTypewriter } from '@/hooks/use-typewriter';
 
 describe('useTypewriter', () => {
     beforeEach(() => vi.useFakeTimers());

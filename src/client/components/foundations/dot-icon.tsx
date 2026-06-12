@@ -24,15 +24,15 @@ export const Dot = ({
             width={sizes[size].wh}
             height={sizes[size].wh}
             viewBox={`0 0 ${sizes[size].wh} ${sizes[size].wh}`}
-            fill='none'
+            fill="none"
             {...props}
         >
             <circle
                 cx={sizes[size].c}
                 cy={sizes[size].c}
                 r={sizes[size].r}
-                fill='currentColor'
-                stroke='currentColor'
+                fill="currentColor"
+                stroke="currentColor"
             />
         </svg>
     );

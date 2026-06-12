@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client/react';
+import type { SearchFiltersInput, SearchResult } from '@generated/types';
 import { SEARCH_LISTINGS } from '@/grapqhl/queries/search';
 import { mockSearchResult } from '@/pages/results/results.mock';
-import type { SearchFiltersInput, SearchResult } from '@generated/types';
 
 export type SearchData = {
     searchListings: SearchResult;

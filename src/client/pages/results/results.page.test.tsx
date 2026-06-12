@@ -5,8 +5,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('@/hooks/use-search');
 
 import { useSearch } from '@/hooks/use-search';
-import { ResultsPage } from '@/pages/results/results.page';
 import { mockSearchResult } from '@/pages/results/results.mock';
+import { ResultsPage } from '@/pages/results/results.page';
 
 const mockUseSearch = vi.mocked(useSearch);
 
@@ -60,7 +60,7 @@ describe('ResultsPage', () => {
     it('shows an error message when there is an error', () => {
         mockUseSearch.mockReturnValue({
             ...defaultState,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
             error: new Error('oops') as any,
         });
         renderPage('3 bed house');

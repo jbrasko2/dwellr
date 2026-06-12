@@ -32,9 +32,9 @@ export const TagCheckbox = ({
             )}
         >
             <svg
-                aria-hidden='true'
-                viewBox='0 0 14 14'
-                fill='none'
+                aria-hidden="true"
+                viewBox="0 0 14 14"
+                fill="none"
                 className={cx(
                     'pointer-events-none absolute text-fg-white opacity-0 transition-inherit-all',
                     size === 'sm' && 'size-2.5',
@@ -44,11 +44,11 @@ export const TagCheckbox = ({
                 )}
             >
                 <path
-                    d='M11.6666 3.5L5.24992 9.91667L2.33325 7'
-                    stroke='currentColor'
-                    strokeWidth='2'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
+                    d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         </div>

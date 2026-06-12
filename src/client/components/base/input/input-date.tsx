@@ -1,5 +1,6 @@
 'use client';
 
+import { HelpCircle, InfoCircle } from '@untitledui/icons';
 import {
     type ComponentType,
     type HTMLAttributes,
@@ -8,7 +9,6 @@ import {
     createContext,
     useContext,
 } from 'react';
-import { HelpCircle, InfoCircle } from '@untitledui/icons';
 import type { DateInputProps as AriaDateInputProps } from 'react-aria-components';
 import {
     DateField as AriaDateField,
@@ -18,10 +18,10 @@ import {
     Group as AriaGroup,
     type DateValue,
 } from 'react-aria-components';
-import { cx, sortCx } from '@/utils/cx';
 import { Tooltip, TooltipTrigger } from '../tooltip/tooltip';
 import { HintText } from './hint-text';
 import { Label } from './label';
+import { cx, sortCx } from '@/utils/cx';
 
 const DateFieldContext = createContext<{
     size?: 'sm' | 'md' | 'lg';
@@ -39,6 +39,7 @@ export interface InputDateBaseProps extends Omit<
     tooltip?: string;
     /**
      * Input size.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -183,7 +184,7 @@ export const InputDateBase = ({
 
             {/* Tooltip and help icon */}
             {tooltip && (
-                <Tooltip title={tooltip} placement='top'>
+                <Tooltip title={tooltip} placement="top">
                     <TooltipTrigger
                         className={cx(
                             'absolute cursor-pointer text-fg-quaternary transition duration-200 group-invalid/input:hidden hover:text-fg-quaternary_hover focus:text-fg-quaternary_hover',
@@ -192,7 +193,7 @@ export const InputDateBase = ({
                             tooltipClassName,
                         )}
                     >
-                        <HelpCircle className='size-4 stroke-[2.25px]' />
+                        <HelpCircle className="size-4 stroke-[2.25px]" />
                     </TooltipTrigger>
                 </Tooltip>
             )}
@@ -216,8 +217,8 @@ export const InputDateBase = ({
                     )}
                 >
                     <span
-                        aria-hidden='true'
-                        className='pointer-events-none rounded px-1 py-px text-xs font-medium text-quaternary ring-1 ring-secondary select-none ring-inset'
+                        aria-hidden="true"
+                        className="pointer-events-none rounded px-1 py-px text-xs font-medium text-quaternary ring-1 ring-secondary select-none ring-inset"
                     >
                         {typeof shortcut === 'string' ? shortcut : '⌘K'}
                     </span>

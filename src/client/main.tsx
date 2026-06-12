@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@/styles/globals.css';
-import { ThemeProvider } from '@/providers/theme-provider';
 import { App } from '@/App';
+import { ThemeProvider } from '@/providers/theme-provider';
 import { ApolloClient, HttpLink, InMemoryCache, gql } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
 

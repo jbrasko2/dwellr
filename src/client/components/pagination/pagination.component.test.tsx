@@ -96,7 +96,7 @@ describe('Pagination', () => {
             ).toBeDisabled();
             expect(
                 screen.getByRole('button', { name: 'Next page' }),
-            ).not.toBeDisabled();
+            ).toBeEnabled();
         });
 
         it('disables the Next button on the last page', () => {
@@ -112,7 +112,7 @@ describe('Pagination', () => {
             ).toBeDisabled();
             expect(
                 screen.getByRole('button', { name: 'Previous page' }),
-            ).not.toBeDisabled();
+            ).toBeEnabled();
         });
 
         it('calls onPageChange with the next page when Next is clicked', async () => {

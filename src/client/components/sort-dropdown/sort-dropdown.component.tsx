@@ -46,11 +46,12 @@ export const SortDropdown: FunctionComponent<SortDropdownProps> = ({
                 value={value ?? ''}
                 onChange={handleChange}
                 className={cx(
-                    'appearance-none cursor-pointer rounded-lg bg-primary shadow-xs ring-1 ring-primary ring-inset',
-                    'py-2 pl-3 pr-9 text-sm text-primary',
-                    'transition-shadow duration-100 ease-linear',
-                    'hover:ring-2 hover:ring-brand',
-                    'focus:outline-none focus:ring-2 focus:ring-brand',
+                    'appearance-none cursor-pointer rounded-full bg-white ring-1 ring-brand-900/15 ring-inset',
+                    'py-2 pl-4 pr-9 text-sm text-brand-900',
+                    'transition-all duration-150 ease-linear',
+                    'hover:ring-brand-500/60',
+                    'focus:outline-none focus:ring-2 focus:ring-brand-500',
+                    'dark:bg-brand-900 dark:text-cream dark:ring-cream/15',
                 )}
             >
                 <option value="">Sort by</option>
@@ -60,7 +61,7 @@ export const SortDropdown: FunctionComponent<SortDropdownProps> = ({
                     </option>
                 ))}
             </select>
-            <ChevronDown className="pointer-events-none absolute right-3 size-4 text-fg-quaternary stroke-[2.25px]" />
+            <ChevronDown className="pointer-events-none absolute right-3 size-4 text-brand-900/40 stroke-[2.25px] dark:text-cream/40" />
         </div>
     );
 };

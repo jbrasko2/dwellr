@@ -1,7 +1,7 @@
-import { HomePage } from '@/pages/home/home.page';
 import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { HomePage } from '@/pages/home/home.page';
 
 const renderPage = () =>
     render(

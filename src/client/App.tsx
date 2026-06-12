@@ -1,7 +1,7 @@
-import { HomePage } from '@/pages/home/home.page';
-import { ResultsPage } from '@/pages/results/results.page';
 import { type FunctionComponent } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HomePage } from '@/pages/home/home.page';
+import { ResultsPage } from '@/pages/results/results.page';
 
 export const App: FunctionComponent = () => {
     return (

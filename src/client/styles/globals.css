@@ -1,8 +1,8 @@
 @import './theme.css';
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @plugin "@tailwindcss/typography";
-@import "./typography.css";
+@import './typography.css';
 
 @plugin "tailwindcss-animate";
 @plugin "tailwindcss-react-aria-components";
@@ -38,6 +38,32 @@ body {
     font-variant-ligatures: contextual;
     -webkit-font-kerning: normal;
     font-kerning: normal;
+}
+
+body {
+    background-color: var(--color-cream);
+    color: var(--color-brand-900);
+}
+
+.dark-mode body {
+    background-color: #131c0f;
+    color: var(--color-cream);
+}
+
+/* Film-grain overlay for atmosphere; sits above everything but never blocks input. */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+::selection {
+    background-color: var(--color-brand-500);
+    color: var(--color-cream);
 }
 
 /* Hide the default expand arrow on Safari.  */

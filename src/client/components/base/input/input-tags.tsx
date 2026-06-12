@@ -1,8 +1,8 @@
 'use client';
 
+import { HelpCircle, InfoCircle } from '@untitledui/icons';
 import type { Key, KeyboardEvent, ReactNode } from 'react';
 import { useCallback, useRef, useState } from 'react';
-import { HelpCircle, InfoCircle } from '@untitledui/icons';
 import { Group as AriaGroup, Input as AriaInput } from 'react-aria-components';
 import { HintText } from '@/components/base/input/hint-text';
 import { Label } from '@/components/base/input/label';
@@ -24,6 +24,7 @@ export interface InputTagsProps {
     tooltip?: string;
     /**
      * Input size variant.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -37,6 +38,7 @@ export interface InputTagsProps {
     isInvalid?: boolean;
     /**
      * Whether to allow duplicate tag values.
+     *
      * @default false
      */
     allowDuplicates?: boolean;
@@ -304,23 +306,23 @@ export const InputTags = ({
                                 <div
                                     ref={tagGroupRef}
                                     onKeyDown={handleTagGroupKeyDown}
-                                    className='contents'
+                                    className="contents"
                                 >
                                     <TagGroup
                                         label={label || 'Tags'}
                                         size={size === 'lg' ? 'md' : size}
                                         onRemove={handleRemove}
-                                        className='contents'
+                                        className="contents"
                                     >
                                         <TagList
-                                            className='flex flex-wrap gap-1.5 focus:outline-hidden'
+                                            className="flex flex-wrap gap-1.5 focus:outline-hidden"
                                             items={entries}
                                         >
                                             {(item) => (
                                                 <Tag
                                                     id={item.id}
                                                     isDisabled={isDisabled}
-                                                    className='focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-[-2px] focus-visible:outline-hidden'
+                                                    className="focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-[-2px] focus-visible:outline-hidden"
                                                 >
                                                     {item.label}
                                                 </Tag>
@@ -330,10 +332,10 @@ export const InputTags = ({
                                 </div>
                             )}
 
-                            <div className='relative flex min-w-[20%] flex-1 flex-row items-center'>
+                            <div className="relative flex min-w-[20%] flex-1 flex-row items-center">
                                 <AriaInput
                                     ref={inputRef}
-                                    type='text'
+                                    type="text"
                                     value={inputValue}
                                     disabled={isDisabled}
                                     placeholder={
@@ -343,20 +345,20 @@ export const InputTags = ({
                                         setInputValue(e.target.value)
                                     }
                                     onKeyDown={handleInputKeyDown}
-                                    className='w-full flex-[1_0_0] appearance-none bg-transparent text-ellipsis text-primary caret-alpha-black/90 outline-hidden placeholder:text-placeholder focus:outline-hidden disabled:cursor-not-allowed'
+                                    className="w-full flex-[1_0_0] appearance-none bg-transparent text-ellipsis text-primary caret-alpha-black/90 outline-hidden placeholder:text-placeholder focus:outline-hidden disabled:cursor-not-allowed"
                                 />
                             </div>
                         </div>
 
                         {tooltip && (
-                            <Tooltip title={tooltip} placement='top'>
+                            <Tooltip title={tooltip} placement="top">
                                 <TooltipTrigger
                                     className={cx(
                                         'absolute cursor-pointer text-fg-quaternary transition duration-100 ease-linear group-invalid/input:hidden hover:text-fg-quaternary_hover focus:text-fg-quaternary_hover',
                                         sizes[size].iconTrailing,
                                     )}
                                 >
-                                    <HelpCircle className='size-4 stroke-[2.25px]' />
+                                    <HelpCircle className="size-4 stroke-[2.25px]" />
                                 </TooltipTrigger>
                             </Tooltip>
                         )}

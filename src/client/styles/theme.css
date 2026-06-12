@@ -1,11 +1,7 @@
 @theme {
     /* FONT FAMILY */
-    --font-body:
-        var(--font-inter, 'Inter'), -apple-system, 'Segoe UI', Roboto, Arial,
-        sans-serif;
-    --font-display:
-        var(--font-inter, 'Inter'), -apple-system, 'Segoe UI', Roboto, Arial,
-        sans-serif;
+    --font-body: 'Karla', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
     --font-mono:
         ui-monospace, 'Roboto Mono', SFMono-Regular, Menlo, Monaco, Consolas,
         'Liberation Mono', 'Courier New', monospace;
@@ -50,6 +46,31 @@
 
     /* MAX WIDTH */
     --max-width-container: 1280px;
+
+    /* ANIMATIONS */
+    --animate-rise: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-drift: drift 16s ease-in-out infinite;
+
+    @keyframes rise {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes drift {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(2deg);
+        }
+    }
 
     /* BREAKPOINTS */
     --breakpoint-xxs: 320px;

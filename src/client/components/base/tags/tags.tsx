@@ -1,5 +1,6 @@
 'use client';
 
+import { User01 } from '@untitledui/icons';
 import {
     type ImgHTMLAttributes,
     type PropsWithChildren,
@@ -8,7 +9,6 @@ import {
     useContext,
     useState,
 } from 'react';
-import { User01 } from '@untitledui/icons';
 import {
     Tag as AriaTag,
     TagGroup as AriaTagGroup,
@@ -16,10 +16,10 @@ import {
     TagList as AriaTagList,
     type TagProps as AriaTagProps,
 } from 'react-aria-components';
-import { Dot } from '@/components/foundations/dot-icon';
-import { cx } from '@/utils/cx';
 import { TagCheckbox } from './tag-checkbox';
 import { TagCloseX } from './tag-close-x';
+import { Dot } from '@/components/foundations/dot-icon';
+import { cx } from '@/utils/cx';
 
 export const TagAvatar = ({
     src,
@@ -41,13 +41,13 @@ export const TagAvatar = ({
             {src && !isFailed ? (
                 <img
                     data-avatar-img
-                    className='size-full object-cover'
+                    className="size-full object-cover"
                     src={src}
                     alt={alt}
                     onError={() => setIsFailed(true)}
                 />
             ) : (
-                <User01 className='size-3 stroke-[2.25px] text-fg-quaternary' />
+                <User01 className="size-3 stroke-[2.25px] text-fg-quaternary" />
             )}
         </div>
     );
@@ -164,13 +164,13 @@ export const Tag = ({
     const leadingContent = avatarSrc ? (
         <TagAvatar
             src={avatarSrc}
-            alt='Avatar'
+            alt="Avatar"
             contrastBorder={avatarContrastBorder}
         />
     ) : dot ? (
         <Dot
             className={cx('text-fg-success-secondary', dotClassName)}
-            size='sm'
+            size="sm"
         />
     ) : null;
 

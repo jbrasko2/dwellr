@@ -83,13 +83,15 @@ export const ResultsPage: FunctionComponent = () => {
             <Header />
             <PageWrapper>
                 <div className="flex flex-col gap-6">
-                    <SearchBar
-                        onSearch={handleSearch}
-                        loading={loading}
-                        initialValue={prompt}
-                    />
+                    <div className="flex justify-center">
+                        <SearchBar
+                            onSearch={handleSearch}
+                            loading={loading}
+                            initialValue={prompt}
+                        />
+                    </div>
                     {error && (
-                        <p className="text-red-500">
+                        <p className="rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300">
                             Something went wrong. Please try again.
                         </p>
                     )}
@@ -99,9 +101,12 @@ export const ResultsPage: FunctionComponent = () => {
                                 filters={result.filters}
                                 onRemove={handleRemoveFilter}
                             />
-                            <div className="flex items-center justify-between">
-                                <p className="text-sm text-secondary">
-                                    {result.listings.length} listing
+                            <div className="flex items-center justify-between border-b border-brand-900/10 pb-4 dark:border-cream/10">
+                                <p className="text-sm text-brand-900/60 dark:text-cream/60">
+                                    <span className="font-display text-lg font-semibold text-brand-900 dark:text-cream">
+                                        {result.listings.length}
+                                    </span>{' '}
+                                    listing
                                     {result.listings.length !== 1
                                         ? 's'
                                         : ''}{' '}

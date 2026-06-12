@@ -156,7 +156,7 @@ export const InputGroup = ({
                         {leadingAddon && (
                             <section
                                 data-leading={hasLeading || undefined}
-                                className='group-disabled:opacity-50'
+                                className="group-disabled:opacity-50"
                             >
                                 {leadingAddon}
                             </section>
@@ -185,7 +185,7 @@ export const InputGroup = ({
                         {trailingAddon && (
                             <section
                                 data-trailing={hasTrailing || undefined}
-                                className='group-disabled:opacity-50'
+                                className="group-disabled:opacity-50"
                             >
                                 {trailingAddon}
                             </section>

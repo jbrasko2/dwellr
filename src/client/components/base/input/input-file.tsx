@@ -10,6 +10,7 @@ import { cx } from '@/utils/cx';
 interface InputFileProps {
     /**
      * The size of the input.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -39,6 +40,7 @@ interface InputFileProps {
     className?: string;
     /**
      * The text of the upload button.
+     *
      * @default "Upload"
      */
     buttonText?: string;
@@ -98,7 +100,7 @@ export const InputFile = ({
                 trailingAddon={
                     <Button
                         size={size}
-                        color='secondary'
+                        color="secondary"
                         onClick={handleClick}
                         isDisabled={isDisabled}
                     >
@@ -106,7 +108,7 @@ export const InputFile = ({
                     </Button>
                 }
             >
-                <div className='relative flex min-w-0 flex-1'>
+                <div className="relative flex min-w-0 flex-1">
                     <InputBase
                         placeholder={placeholder}
                         value={fileNames}
@@ -115,30 +117,30 @@ export const InputFile = ({
                             'cursor-pointer',
                             isLoading && 'pr-9',
                         )}
-                        wrapperClassName='cursor-pointer'
+                        wrapperClassName="cursor-pointer"
                         onClick={handleClick}
                     />
                     {isLoading && (
                         <svg
-                            fill='none'
-                            viewBox='0 0 16 16'
-                            className='pointer-events-none absolute top-1/2 right-3 z-20 size-4 -translate-y-1/2 text-fg-quaternary'
+                            fill="none"
+                            viewBox="0 0 16 16"
+                            className="pointer-events-none absolute top-1/2 right-3 z-20 size-4 -translate-y-1/2 text-fg-quaternary"
                         >
                             <circle
-                                className='stroke-current opacity-30'
-                                cx='8'
-                                cy='8'
-                                r='6.5'
-                                strokeWidth='1.5'
+                                className="stroke-current opacity-30"
+                                cx="8"
+                                cy="8"
+                                r="6.5"
+                                strokeWidth="1.5"
                             />
                             <circle
-                                className='origin-center animate-spin stroke-current'
-                                cx='8'
-                                cy='8'
-                                r='6.5'
-                                strokeWidth='1.5'
-                                strokeDasharray='10 40'
-                                strokeLinecap='round'
+                                className="origin-center animate-spin stroke-current"
+                                cx="8"
+                                cy="8"
+                                r="6.5"
+                                strokeWidth="1.5"
+                                strokeDasharray="10 40"
+                                strokeLinecap="round"
                             />
                         </svg>
                     )}
@@ -147,8 +149,8 @@ export const InputFile = ({
 
             <input
                 ref={inputRef}
-                type='file'
-                className='hidden'
+                type="file"
+                className="hidden"
                 disabled={isDisabled}
                 accept={acceptedFileTypes?.toString()}
                 multiple={allowsMultiple}

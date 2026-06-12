@@ -1,6 +1,6 @@
-import { useSearch } from '@/hooks/use-search';
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { useSearch } from '@/hooks/use-search';
 
 const { executeSearchMock, queryState } = vi.hoisted(() => {
     const executeSearchMock = vi.fn();

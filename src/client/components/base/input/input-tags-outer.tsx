@@ -22,6 +22,7 @@ export interface InputTagsOuterProps {
     tooltip?: string;
     /**
      * Input size variant.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -35,6 +36,7 @@ export interface InputTagsOuterProps {
     isInvalid?: boolean;
     /**
      * Whether to allow duplicate tag values.
+     *
      * @default false
      */
     allowDuplicates?: boolean;
@@ -195,7 +197,7 @@ export const InputTagsOuter = ({
                 className,
             )}
         >
-            <div className='flex flex-col gap-1.5'>
+            <div className="flex flex-col gap-1.5">
                 {label && (
                     <Label
                         isRequired={hideRequiredIndicator ? false : isRequired}
@@ -223,7 +225,7 @@ export const InputTagsOuter = ({
                     onRemove={handleRemove}
                 >
                     <TagList
-                        className='flex flex-wrap gap-1.5 focus:outline-hidden'
+                        className="flex flex-wrap gap-1.5 focus:outline-hidden"
                         items={entries}
                     >
                         {(item) => (

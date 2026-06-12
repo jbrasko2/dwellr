@@ -1,8 +1,8 @@
 'use client';
 
+import { OTPInput, OTPInputContext } from 'input-otp';
 import type { ComponentPropsWithRef } from 'react';
 import { createContext, useContext, useId } from 'react';
-import { OTPInput, OTPInputContext } from 'input-otp';
 import { HintText } from '@/components/base/input/hint-text';
 import { Label as LabelBase } from '@/components/base/input/label';
 import { cx } from '@/utils/cx';
@@ -53,7 +53,7 @@ const Root = ({
     return (
         <PinInputContext.Provider value={{ size, disabled, id, invalid }}>
             <div
-                role='group'
+                role="group"
                 className={cx('flex h-max flex-col gap-1.5', className)}
                 {...props}
             />
@@ -116,7 +116,7 @@ const Group = ({
             maxLength={maxLength}
             disabled={disabled}
             id={'pin-input-' + id}
-            aria-label='Enter your pin'
+            aria-label="Enter your pin"
             aria-labelledby={'pin-input-label-' + id}
             aria-describedby={'pin-input-description-' + id}
             containerClassName={cx(
@@ -183,7 +183,7 @@ const FakeCaret = ({ size = 'md' }: { size?: PinInputSize }) => {
 const Separator = (props: ComponentPropsWithRef<'div'>) => {
     return (
         <div
-            role='separator'
+            role="separator"
             {...props}
             className={cx(
                 'text-center text-display-xl font-medium text-utility-neutral-300',
@@ -216,7 +216,7 @@ const Description = (props: ComponentPropsWithRef<typeof HintText>) => {
         <HintText
             {...props}
             id={'pin-input-description-' + id}
-            role='description'
+            role="description"
             className={cx(size === 'xxxs' && 'text-xs')}
         />
     );

@@ -1,6 +1,6 @@
+import type { Listing } from '@generated/types';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import type { Listing } from '@generated/types';
 import { ListingGrid } from '@/components/listing-grid/listing-grid.component';
 
 const makeListing = (id: string): Listing => ({

@@ -1,5 +1,4 @@
-import { Button } from '@/components/base/buttons/button';
-import { Input } from '@/components/base/input/input';
+import { ArrowRight, SearchLg } from '@untitledui/icons';
 import { useEffect, useState, type FunctionComponent } from 'react';
 
 const PLACEHOLDERS = [
@@ -36,7 +35,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
                 setPlaceholderIndex((i) => (i + 1) % PLACEHOLDERS.length);
                 setPlaceholderVisible(true);
             }, 300);
-        }, 2500);
+        }, 3500);
 
         return () => {
             clearInterval(interval);
@@ -56,34 +55,41 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
     };
 
     return (
-        <div className="flex gap-2 w-full max-w-2xl">
+        <div className="flex w-full max-w-2xl items-center gap-3 rounded-full border border-brand-900/10 bg-white p-2 pl-5 shadow-[0_24px_48px_-16px_rgba(30,46,26,0.18)] transition-all duration-200 focus-within:-translate-y-0.5 focus-within:border-brand-500/50 focus-within:shadow-[0_32px_64px_-16px_rgba(30,46,26,0.28)] dark:border-cream/10 dark:bg-brand-900">
+            <SearchLg
+                aria-hidden="true"
+                className="size-5 shrink-0 text-brand-500 dark:text-brand-300"
+            />
             <div className="relative flex-1">
-                <Input
+                <input
                     type="text"
                     value={prompt}
-                    onChange={setPrompt}
+                    onChange={(e) => setPrompt(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    size="lg"
-                    placeholder=""
-                    isDisabled={loading}
+                    disabled={loading}
+                    className="w-full bg-transparent py-2.5 text-md text-brand-900 outline-none disabled:opacity-60 dark:text-cream"
                 />
                 {!prompt && (
-                    <div className="pointer-events-none absolute inset-0 flex items-center overflow-hidden px-3.5 select-none">
+                    <div className="pointer-events-none absolute inset-0 flex items-center overflow-hidden select-none">
                         <span
-                            className={`truncate text-placeholder text-md transition-opacity duration-300 ${placeholderVisible ? 'opacity-100' : 'opacity-0'}`}
+                            className={`truncate text-md text-brand-900/40 transition-opacity duration-300 dark:text-cream/40 ${placeholderVisible ? 'opacity-100' : 'opacity-0'}`}
                         >
                             {PLACEHOLDERS[placeholderIndex]}
                         </span>
                     </div>
                 )}
             </div>
-            <Button
+            <button
+                type="button"
                 onClick={handleSubmit}
-                isDisabled={loading || !prompt.trim()}
-                size="lg"
+                disabled={loading || !prompt.trim()}
+                className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-brand-500 dark:hover:bg-brand-400"
             >
                 {loading ? 'Searching...' : 'Search'}
-            </Button>
+                {!loading && (
+                    <ArrowRight aria-hidden="true" className="size-4" />
+                )}
+            </button>
         </div>
     );
 };

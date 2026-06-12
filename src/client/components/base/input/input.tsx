@@ -1,5 +1,6 @@
 'use client';
 
+import { Eye, EyeOff, HelpCircle, InfoCircle } from '@untitledui/icons';
 import {
     type ComponentType,
     type HTMLAttributes,
@@ -9,7 +10,6 @@ import {
     useContext,
     useState,
 } from 'react';
-import { Eye, EyeOff, HelpCircle, InfoCircle } from '@untitledui/icons';
 import type {
     InputProps as AriaInputProps,
     TextFieldProps as AriaTextFieldProps,
@@ -36,6 +36,7 @@ export interface InputBaseProps extends Omit<AriaInputProps, 'size'> {
     isRequired?: boolean;
     /**
      * Input size.
+     *
      * @default "sm"
      */
     size?: 'sm' | 'md' | 'lg';
@@ -176,7 +177,7 @@ export const InputBase = ({
 
             {/* Tooltip and help icon */}
             {tooltip && type !== 'password' && (
-                <Tooltip title={tooltip} placement='top'>
+                <Tooltip title={tooltip} placement="top">
                     <TooltipTrigger
                         className={cx(
                             'absolute cursor-pointer text-fg-quaternary transition duration-100 ease-linear group-invalid/input:hidden hover:text-fg-quaternary_hover focus:text-fg-quaternary_hover',
@@ -185,7 +186,7 @@ export const InputBase = ({
                             tooltipClassName,
                         )}
                     >
-                        <HelpCircle className='size-4 stroke-[2.25px]' />
+                        <HelpCircle className="size-4 stroke-[2.25px]" />
                     </TooltipTrigger>
                 </Tooltip>
             )}
@@ -205,7 +206,7 @@ export const InputBase = ({
             {/* Password visibility toggle */}
             {type === 'password' && (
                 <AriaButton
-                    aria-label='Toggle password visibility'
+                    aria-label="Toggle password visibility"
                     onClick={() => setIsPasswordVisible(!isPasswordVisible)}
                     className={cx(
                         'absolute flex cursor-pointer items-center justify-center text-fg-quaternary transition duration-100 ease-linear hover:text-fg-quaternary_hover focus:text-fg-quaternary_hover focus:outline-hidden',
@@ -213,9 +214,9 @@ export const InputBase = ({
                     )}
                 >
                     {isPasswordVisible ? (
-                        <EyeOff className='size-4 stroke-[2.25px]' />
+                        <EyeOff className="size-4 stroke-[2.25px]" />
                     ) : (
-                        <Eye className='size-4 stroke-[2.25px]' />
+                        <Eye className="size-4 stroke-[2.25px]" />
                     )}
                 </AriaButton>
             )}
@@ -229,8 +230,8 @@ export const InputBase = ({
                     )}
                 >
                     <span
-                        aria-hidden='true'
-                        className='pointer-events-none rounded px-1 py-px text-xs font-medium text-quaternary ring-1 ring-secondary select-none ring-inset'
+                        aria-hidden="true"
+                        className="pointer-events-none rounded px-1 py-px text-xs font-medium text-quaternary ring-1 ring-secondary select-none ring-inset"
                     >
                         {typeof shortcut === 'string' ? shortcut : '⌘K'}
                     </span>
