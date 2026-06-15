@@ -27,8 +27,8 @@ Always respond with ONLY a valid JSON object matching this exact shape — no pr
   "noHoaFee": boolean or null (true when user says 'no HOA'),
   "maxHoaFee": number or null (maximum monthly HOA fee in dollars),
   "hasTour": boolean or null (true when user asks for virtual tours or 3D tours),
-  "dogs": boolean or null (true when user mentions dogs or dog-friendly),
-  "cats": boolean or null (true when user mentions cats or cat-friendly),
+  "dogs": boolean or null (true when user mentions dogs, dog-friendly, or generic terms like pet-friendly or pets allowed),
+  "cats": boolean or null (true when user mentions cats, cat-friendly, or generic terms like pet-friendly or pets allowed),
   "sortField": "list_price" | "list_date" | "beds" | "lot_sqft" | "photo_count" | null (use when user asks to sort/order results),
   "sortDirection": "asc" | "desc" | null (asc for cheapest/smallest/oldest first, desc for most expensive/largest/newest first),
   "features": ["array of strings — only use exact values from this list: basement, carport, central_air, central_heat, city_view, community_swimming_pool, den_or_office, dining_room, dishwasher, energy_efficient, family_room, fireplace, garage_1_or_more, garage_2_or_more, garage_3_or_more, golf_course_view, hardwood_floors, hill_or_mountain_view, horse_facilities, lake_view, laundry_room, ocean_view, single_story, spa_or_hot_tub, swimming_pool, tennis_court, two_or_more_stories, washer_dryer, waterfront"]
