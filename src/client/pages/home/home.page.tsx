@@ -62,10 +62,6 @@ export const HomePage: FunctionComponent = () => {
                         <div className="animate-drift absolute bottom-[10%] left-[5%] hidden h-44 w-28 rounded-t-full border border-sand/70 [animation-delay:-8s] lg:block dark:border-sand/30" />
                     </div>
 
-                    <p className="animate-rise text-xs font-semibold tracking-[0.3em] text-brand-600 uppercase dark:text-brand-300">
-                        Natural-language home search
-                    </p>
-
                     <div>
                         <h1 className="font-display min-h-[1.15em] text-5xl font-medium tracking-tight text-brand-900 sm:text-7xl dark:text-cream">
                             {heading.displayed.slice(0, ACCENT_START)}

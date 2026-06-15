@@ -15,7 +15,7 @@ export const Header: FunctionComponent = () => {
                     </span>
                 </Link>
                 <p className="hidden text-xs font-medium tracking-[0.25em] text-brand-900/40 uppercase sm:block dark:text-cream/40">
-                    Home search in plain English
+                    Natural-Language Home Search
                 </p>
             </div>
         </header>
