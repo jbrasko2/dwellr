@@ -14,8 +14,8 @@ const SUBTITLE_SPEED_MS = 40;
 const SUBTITLE_DELAY_MS = HEADING.length * HEADING_SPEED_MS + 300;
 
 const EXAMPLES = [
-    'Pet-friendly condo in Denver',
-    'Craftsman with a porch in Portland',
+    '3-bed house in Denver with a pool',
+    'Craftsman with a 2-car garage in Portland',
     'New build under $400k in Austin',
 ];
 
