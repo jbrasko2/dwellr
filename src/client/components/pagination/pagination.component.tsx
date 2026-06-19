@@ -34,6 +34,11 @@ export const Pagination: FunctionComponent<PaginationProps> = ({
                     onClick={() => onPageChange(page)}
                     aria-label={`Page ${page}`}
                     aria-current={page === currentPage ? 'page' : undefined}
+                    className={
+                        page !== currentPage
+                            ? 'hover:scale-105 hover:bg-brand-500/10 hover:text-brand-700'
+                            : undefined
+                    }
                 >
                     {page}
                 </Button>
