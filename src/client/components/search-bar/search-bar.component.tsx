@@ -83,7 +83,7 @@ export const SearchBar: FunctionComponent<SearchBarProps> = ({
                 type="button"
                 onClick={handleSubmit}
                 disabled={loading || !prompt.trim()}
-                className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-brand-500 dark:hover:bg-brand-400"
+                className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:enabled:bg-brand-700 disabled:cursor-default active:enabled:scale-95 disabled:opacity-50 dark:bg-brand-500 dark:hover:bg-brand-400"
             >
                 {loading ? 'Searching...' : 'Search'}
                 {!loading && (
